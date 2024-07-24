@@ -12,7 +12,7 @@ const io = socketIo(server, {
 
 io.on('connection', socket => {
   console.log('A user connected', socket.id);
-
+socket.emit('client-id', socket.id);
   socket.on('offer', (data) => {
     socket.to(data.to).emit('offer', data);
   });
